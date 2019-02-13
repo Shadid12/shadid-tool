@@ -7,6 +7,7 @@ import Fab from '@material-ui/core/Fab';
 import Typography from '@material-ui/core/Typography';
 
 import DialogComponent from '../../components/dialog';
+import ListComponent from '../../components/list';
 
 
 const styles = theme => ({
@@ -33,7 +34,9 @@ class Step1Container extends Component {
     toggleDialog = (payload) => {
       this.setState({ dialogOpen: !this.state.dialogOpen });
       if(payload) {
-        console.log(`Payload:`, payload);
+        let conditions = this.state.conditions;
+        conditions.push(payload);
+        this.setState({ conditions: conditions });
       }
     }
 
@@ -65,6 +68,7 @@ class Step1Container extends Component {
             <DialogComponent isOpen={this.state.dialogOpen} parentHandler={this.toggleDialog}/>
           ) : null
         }
+        <ListComponent items={this.state.conditions}/>
         </div>
       );
     }

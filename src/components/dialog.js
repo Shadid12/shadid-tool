@@ -3,13 +3,11 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
-import ColorPicker from 'material-ui-color-picker';
 import { withStyles } from '@material-ui/core/styles';
 import { SketchPicker } from 'react-color';
-
+import uniqid from 'uniqid';
 
 
 const styles = theme => ({
@@ -34,7 +32,7 @@ class DialogComponent extends Component {
     
     handleClose = () => {
         // this.setState({ open: false });
-        this.props.parentHandler({ name: this.state.name, color: this.state.color });
+        this.props.parentHandler({ name: this.state.name, color: this.state.color, id: uniqid() });
     };
 
     handleChangeComplete = (color) => {
