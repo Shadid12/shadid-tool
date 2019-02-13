@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import DemoContainer from './comtainers/Demo';
+import Step1Container from './comtainers/step1/step1';
 
 import {
   BrowserRouter as Router,
   Route,
-  Link,
-  Redirect,
-  withRouter
+  Switch
 } from "react-router-dom";
 
 
@@ -14,7 +13,10 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Route path="/" component={DemoContainer} />
+        <Switch>
+          <Route exact path="/" component={DemoContainer} />
+          <Route path="/step1" component={Step1Container} />
+        </Switch>
       </Router>
     );
   }
