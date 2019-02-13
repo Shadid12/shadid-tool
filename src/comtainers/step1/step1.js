@@ -26,11 +26,15 @@ const styles = theme => ({
 
 class Step1Container extends Component {
     state = {
-      dialogOpen: false
+      dialogOpen: false,
+      conditions: []
     };
 
-    toggleDialog = () => {
+    toggleDialog = (payload) => {
       this.setState({ dialogOpen: !this.state.dialogOpen });
+      if(payload) {
+        console.log(`Payload:`, payload);
+      }
     }
 
     render() {
@@ -58,7 +62,7 @@ class Step1Container extends Component {
         </Grid>
         {
           this.state.dialogOpen ? (
-            <DialogComponent />
+            <DialogComponent isOpen={this.state.dialogOpen} parentHandler={this.toggleDialog}/>
           ) : null
         }
         </div>
