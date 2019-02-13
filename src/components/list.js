@@ -24,7 +24,8 @@ const styles = theme => ({
     button: {
         marginRight: '10px',
         marginLeft: '10px'
-    }
+    },
+    circle: {}
 });
 
 class ListComponent extends Component {
@@ -33,6 +34,14 @@ class ListComponent extends Component {
     };
     componentDidMount() {
         this.setState({ items: this.props.items })
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({ items: nextProps.items });  
+    }
+
+    deleteItem = (item) => {
+        this.props.deleteItem(item);
     }
 
     render() {
@@ -47,12 +56,19 @@ class ListComponent extends Component {
             <List >
                 {
                     this.state.items.map( (aItem)  => {
+                        const circle = {
+                            width: '20px',
+                            height: '20px',
+                            borderRadius: '50%',
+                            backgroundColor: `${aItem.color}`
+                        }
                         return(
                             <ListItem key={aItem.id}>
                                 <ListItemText
                                     primary={aItem.name}
                                 >
                                 </ListItemText>
+                                <div style={circle}></div>
                                 <Button
                                     color="primary"
                                     className={classes.button}
@@ -60,7 +76,7 @@ class ListComponent extends Component {
                                     Edit
                                 </Button>
                                 <ListItemSecondaryAction>
-                                    <IconButton aria-label="Delete">
+                                    <IconButton aria-label="Delete" onClick={() => {this.deleteItem(aItem)}}>
                                         <DeleteIcon />
                                     </IconButton>
                                 </ListItemSecondaryAction>

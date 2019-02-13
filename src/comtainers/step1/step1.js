@@ -40,6 +40,13 @@ class Step1Container extends Component {
       }
     }
 
+    deleteItem = (payload) => {
+      const newConditions = this.state.conditions.filter((item) => {
+        return item.id !== payload.id
+      })
+      this.setState({ conditions: newConditions });
+    }
+
     render() {
       const { classes } = this.props;
       return (
@@ -68,7 +75,7 @@ class Step1Container extends Component {
             <DialogComponent isOpen={this.state.dialogOpen} parentHandler={this.toggleDialog}/>
           ) : null
         }
-        <ListComponent items={this.state.conditions}/>
+        <ListComponent items={this.state.conditions} deleteItem={this.deleteItem}/>
         </div>
       );
     }
