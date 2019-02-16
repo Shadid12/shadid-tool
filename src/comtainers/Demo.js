@@ -34,7 +34,7 @@ class DemoContainer extends Component {
                     </Typography>
                 </Paper>
             </Grid>
-            <Grid item xs={12} sm={3}>
+            <Grid item xs={12} sm={3} >
                 <Paper className={classes.paper}>
                     <Typography variant="button" gutterBottom>
                         Step 1
@@ -48,6 +48,24 @@ class DemoContainer extends Component {
                         color="primary" 
                         className={classes.button}
                         onClick={() => { this.props.history.push('/step1') } }
+                    >
+                        View
+                    </Button>
+                </Paper>
+            </Grid>
+            <Grid item xs={12} sm={3} >
+                <Paper className={classes.paper}>
+                    <Typography variant="button" gutterBottom>
+                        Step 2
+                    </Typography>
+                    <Typography variant="body1" gutterBottom>
+                        This is the Patients list. In this list you will be able to attach created behaviours to patients
+                    </Typography>
+                    <Button 
+                        variant="contained" 
+                        color="primary" 
+                        className={classes.button}
+                        onClick={() => { this.props.history.push('/step2') } }
                     >
                         View
                     </Button>
