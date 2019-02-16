@@ -71,6 +71,24 @@ class DemoContainer extends Component {
                     </Button>
                 </Paper>
             </Grid>
+            <Grid item xs={12} sm={3} >
+                <Paper className={classes.paper}>
+                    <Typography variant="button" gutterBottom>
+                        Step 3
+                    </Typography>
+                    <Typography variant="body1" gutterBottom>
+                        PSW can see this list of the patient and add patinets behaviour and to the seelcte patients and will recieves color codes
+                    </Typography>
+                    <Button 
+                        variant="contained" 
+                        color="primary" 
+                        className={classes.button}
+                        onClick={() => { this.props.history.push('/step3') } }
+                    >
+                        View
+                    </Button>
+                </Paper>
+            </Grid>
             </Grid>
         </div>
     );

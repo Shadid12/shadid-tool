@@ -76,14 +76,27 @@ class PatientsListComponent extends Component {
                                             primary={aItem.name}
                                         >
                                         </ListItemText>
-                                        <Button
-                                            color="primary"
-                                            variant="contained"
-                                            className={classes.button}
-                                            onClick={() => {this.openSelectDialog(aItem)}}
-                                        >
-                                            Manage
-                                        </Button>
+                                        {
+                                           this.props.psw ? (
+                                                <Button
+                                                    color="secondary"
+                                                    variant="contained"
+                                                    className={classes.button}
+                                                    onClick={() => {this.openSelectDialog(aItem)}}
+                                                >
+                                                    Manage
+                                                </Button>
+                                           ) : (
+                                            <Button
+                                                color="primary"
+                                                variant="contained"
+                                                className={classes.button}
+                                                onClick={() => {this.openSelectDialog(aItem)}}
+                                            >
+                                                Manage
+                                            </Button>
+                                           )
+                                        }
                                     </ListItem>
                                 )
                             })
