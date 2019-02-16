@@ -49,6 +49,10 @@ class PatientsListComponent extends Component {
         ]
     }
 
+    openSelectDialog = (item) => {
+        this.props.openSelectDialog(item);
+    }
+
     render() {
         const {classes} = this.props;
         return (
@@ -76,6 +80,7 @@ class PatientsListComponent extends Component {
                                             color="primary"
                                             variant="contained"
                                             className={classes.button}
+                                            onClick={() => {this.openSelectDialog(aItem)}}
                                         >
                                             Manage
                                         </Button>

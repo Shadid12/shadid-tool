@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import ApplyDialogComponent from '../../components/applydialog';
 
 import PatientsListComponent from '../../components/patients'
 
@@ -22,6 +23,18 @@ const styles = theme => ({
 });
 
 class Step2Container extends Component {
+    state = {
+        dialogOpen: false
+    }
+
+    openDialog = (item) => {
+        console.log('--->', item);
+        this.setState({ dialogOpen: true })
+    }
+
+    toggleDialog = () => {
+        this.setState({ dialogOpen: false })
+    }
 
     render() {
         const { classes } = this.props;
@@ -42,10 +55,15 @@ class Step2Container extends Component {
                                 Patients List
                             </Typography>
                         </Paper>
-                        <PatientsListComponent />
+                        <PatientsListComponent openSelectDialog={this.openDialog}/>
                     </Grid>
 
                 </Grid>
+                {
+                this.state.dialogOpen ? (
+                    <ApplyDialogComponent isOpen={this.state.dialogOpen} parentHandler={this.toggleDialog}/>
+                ) : null
+                }
             </div>
         )
     }

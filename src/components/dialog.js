@@ -55,10 +55,6 @@ class DialogComponent extends Component {
             >
                 <DialogTitle id="alert-dialog-title">{"Write Condition Name"}</DialogTitle>
                 <DialogContent>
-                    {/* <DialogContentText id="alert-dialog-description">
-                    Let Google help apps determine location. This means sending anonymous location data to
-                    Google, even when no apps are running.
-                    </DialogContentText> */}
                     <form noValidate autoComplete="off">
                         <div className={classes.field}>
                             <TextField
