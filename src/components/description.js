@@ -6,7 +6,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
-import { SketchPicker, TwitterPicker } from 'react-color';
+import { SketchPicker } from 'react-color';
 import uniqid from 'uniqid';
 
 
@@ -14,11 +14,11 @@ const styles = theme => ({
     field: {
     }
 });
-class DialogComponent extends Component {
+class DescriptionDialogComponent extends Component {
 
     state = {
         open: false,
-        name: '',
+        description: '',
         color: '#fff'
     };
 
@@ -32,7 +32,7 @@ class DialogComponent extends Component {
     
     handleClose = () => {
         // this.setState({ open: false });
-        this.props.parentHandler({ name: this.state.name, color: this.state.color, id: uniqid() });
+        this.props.parentHandler();
     };
 
     handleChangeComplete = (color) => {
@@ -59,17 +59,23 @@ class DialogComponent extends Component {
                         <div className={classes.field}>
                             <TextField
                                 id="standard-name"
-                                label="Name"
+                                label="Description"
                                 // className={classes.textField}
                                 value={this.state.name}
-                                onChange={this.handleChange('name')}
+                                onChange={this.handleChange('description')}
                                 margin="normal"
                             />
                         </div>
                         <div className={classes.field}>
-                            <TwitterPicker
-                                color={ this.state.color }
-                                onChangeComplete={ this.handleChangeComplete }
+                            <TextField
+                                id="datetime-local"
+                                label="Time Log"
+                                type="datetime-local"
+                                defaultValue=""
+                                className={classes.textField}
+                                InputLabelProps={{
+                                shrink: true,
+                                }}
                             />
                         </div>
                     </form>
@@ -79,7 +85,7 @@ class DialogComponent extends Component {
                     <Button 
                         onClick={this.handleClose} 
                         color="primary"
-                        disabled={!this.state.name ? true : false}
+                        disabled={!this.state.description ? true : false}
                     >
                         Done
                     </Button>
@@ -90,4 +96,4 @@ class DialogComponent extends Component {
     }
   }
   
-export default withStyles(styles)(DialogComponent);
+export default withStyles(styles)(DescriptionDialogComponent);

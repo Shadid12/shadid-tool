@@ -4,6 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import PatientsListComponent from '../../components/patients'
+import BehaviourComponent from '../../components/behaviours';
 
 const styles = theme => ({
     root: {
@@ -29,6 +30,10 @@ class Step3Container extends Component {
         this.setState({ hideList: true })
     }
 
+    resetDefault = () => {
+        this.setState({ hideList: false })
+    }
+
     render() {
         const { classes } = this.props;
         return (
@@ -42,7 +47,7 @@ class Step3Container extends Component {
                     
                     {
                         this.state.hideList ? (
-                            <div>List Hidded</div>
+                            <BehaviourComponent onBack={this.resetDefault}/>
                         ) : (
                             <Grid 
                                 item xs={6}
